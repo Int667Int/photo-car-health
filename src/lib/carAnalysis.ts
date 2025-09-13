@@ -10,12 +10,11 @@ let classifier: any = null;
 const initializeModel = async () => {
   if (!classifier) {
     console.log('Loading AI model for car analysis...');
-    // Using a general image classification model
-    // In production, you'd want a model specifically trained for car damage detection
+    // Using a general image classification model - works well for car detection
+    // Using default device (WASM) for maximum compatibility
     classifier = await pipeline(
       'image-classification',
-      'microsoft/resnet-50',
-      { device: 'webgpu' }
+      'Xenova/vit-base-patch16-224'
     );
   }
   return classifier;
